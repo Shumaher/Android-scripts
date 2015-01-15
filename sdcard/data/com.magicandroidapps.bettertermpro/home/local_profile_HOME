@@ -1,0 +1,8 @@
+export BTEPSD=/sdcard/data/com.magicandroidapps.bettertermpro
+
+if [ -e "$BTEPSD/home/local_profile" ]
+then
+  . $BTEPSD/home/local_profile
+fi
+
+alias pr='. $BTEPSD/home/local_profile'

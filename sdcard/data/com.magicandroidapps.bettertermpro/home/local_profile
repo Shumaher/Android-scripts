@@ -1,0 +1,71 @@
+export SHELL=$_
+export BTEP=/data/data/com.magicandroidapps.bettertermpro
+export BTEPSD=/sdcard/data/com.magicandroidapps.bettertermpro
+export SSHD=/data/data/berserker.android.apps.sshdroid
+export SSHDSD=/sdcard/data/berserker.android.apps.sshdroid
+export HOME=$BTEP/home
+export PATH=$ANDROID_ROOT/xbin:/data/sdext2/bin:/data/sdext2/data/xbin:$SSHD/home/bin:$BTEP/bin:$BTEP/data/xbin:$BTEPSD/home:$PATH:.
+export HISTFILE=$BTEP/home/.history
+export PS1="\w \\$ "
+export TERMINFO=$BTEP/etc/terminfo
+#export TERMINFO=$BTEP/system/etc/terminfo
+export TERM=linux
+#export TERM=xterm
+export INPUTRC=$BTEPSD/etc/inputrc
+
+which busybox
+
+if !([ -e $HISTFILE ])
+then
+echo "History file missing, creating..."
+echo "ls" > $HISTFILE
+chmod 666 $HISTFILE
+fi
+
+if [ -z $SHELL ]
+then
+export SHELL=$BTEP/bin/sh
+fi
+
+if [ x$SHELL=xmatch_lhs ]
+then
+#export SHELL=$BTEP/bin/sh
+#export SHELL=/data/data/berserker.android.apps.sshdroid/home/bin/sh
+export SHELL=/system/bin/sh
+fi
+
+#alias su="`which su` -c $SHELL"
+alias ll="ls -la"
+
+#echo "Thank you for using Better Terminal Emulator Pro"
+#echo
+
+# If you want to run some commands when the shell is started,
+# add them to $HOME/local_profile.  This file will be preserved if
+# BTEP is upgraded.  If you modify .profile, your changes will be
+# lost when the shell download is updated.
+#if [ -e "local_profile" ]
+#then
+#  . local_profile
+#fi
+#if [ -e "/sdcard/data/com.magicandroidapps.bettertermpro/home/local_profile" ]
+#then
+#  . /sdcard/data/com.magicandroidapps.bettertermpro/home/local_profile
+#fi
+
+cd $HOME
+
+
+alias sh='/system/bin/sh'
+alias ls='ls -lah'
+alias rm='rm -i'
+alias df='df -h'
+alias du='du -h'
+alias md='mkdir -p'
+alias pr='. $BTEPSD/home/local_profile'
+alias bash='$BTEP/bin/bash --rcfile $BTEPSD/home/local_profile'
+alias btep='sh $BTEPSD/home/btep.sh'
+alias cifs='sh $BTEPSD/home/cifs.sh'
+alias opkg='opkg -f $BTEPSD/local/opkg.conf -o $BTEP --cache $BTEP/data/local/opkg/cache -t $BTEP/tmp'
+alias reboot='/data/data/alei.switchpro/files/reboot'
+#alias lnmx='cd /data/sdext2/data/com.mxtech.ffmpeg.v6_vfp/lib && mv libffmpeg.mx.so libffmpeg.mx.so_ORI && ln -s ../../../../../sdcard/lib/libffmpeg.mx.so; cd -'

@@ -1,0 +1,11 @@
+#!/system/bin/sh
+export BTEP=/data/data/com.magicandroidapps.bettertermpro
+export TMPDIR=$BTEP/tmp
+if [ ! -e $TMPDIR ]; then
+  mkdir $TMPDIR
+fi
+if [ x"$TERM" = "x" ]; then
+  export TERM=xterm
+fi
+$BTEP/data/xbin/mc.real $*
+
